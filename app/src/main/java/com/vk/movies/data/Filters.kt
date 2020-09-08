@@ -18,7 +18,7 @@ class DirectorFilter(val director: String): Filter(){
         return movie.director == director
     }
 }
-class FilterCollection{
+class FilterStorage{
     val filters = mutableListOf<Filter>()
     fun addFilter(filter: Filter){
         filters.add(filter)
@@ -36,11 +36,11 @@ class FilterCollection{
 }
 
 
-fun getFilters(): FilterCollection{
+fun getFilters(): FilterStorage{
     val filter1 = DurationFilter(90, 140)
     val filter2 = DirectorFilter("Cameron")
     val filter3 = GenreFilter("Action")
-    val filterCollection1 = FilterCollection()
+    val filterCollection1 = FilterStorage()
     filterCollection1.addFilter(filter1)
     filterCollection1.addFilter(filter2)
     filterCollection1.addFilter(filter3)
