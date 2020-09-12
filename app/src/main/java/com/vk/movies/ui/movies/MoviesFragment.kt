@@ -7,12 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.vk.movies.R
-import com.vk.movies.data.*
+import com.vk.movies.model.DurationFilter
+import com.vk.movies.test.getTestMovieList
+import com.vk.movies.utils.filterMovies
 import kotlinx.android.synthetic.main.fragment_movies.*
-import kotlinx.android.synthetic.main.movie_item.view.*
-import kotlinx.android.synthetic.main.select_filter.*
 import kotlinx.android.synthetic.main.select_filter.view.*
 
 class MoviesFragment : Fragment() {
@@ -55,9 +54,4 @@ class MoviesFragment : Fragment() {
                 .show()
         }
     }
-
-
-
-
-
 }
