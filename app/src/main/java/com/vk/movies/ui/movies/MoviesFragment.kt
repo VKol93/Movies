@@ -7,8 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import com.vk.movies.R
+import com.vk.movies.dataSource.local.MoviesDB
 import com.vk.movies.model.DurationFilter
+import com.vk.movies.model.Movie
 import com.vk.movies.test.getTestMovieList
 import com.vk.movies.utils.filterMovies
 import kotlinx.android.synthetic.main.fragment_movies.*
@@ -28,10 +31,20 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = MoviesAdapter(getTestMovieList())
+        val db = Room.databaseBuilder(requireContext(), MoviesDB::class.java, "DB").allowMainThreadQueries().build()
+        val movies = db.moviesDAO().getAllMovies()
+        val adapter = MoviesAdapter(movies)
         recyclerViewMovies.adapter = adapter
         recyclerViewMovies.layoutManager = LinearLayoutManager(context)
-
+        addMovieButton.setOnClickListener {
+            val movie = Movie(
+                "The Lion King",
+                124,
+                "qwer",
+                "cartoon"
+            )
+            db.moviesDAO().insertMovie(movie)
+        }
         filterButton.setOnClickListener {
              val view = LayoutInflater.from(requireContext()).inflate(R.layout.select_filter, null)
              val builder =  AlertDialog.Builder(requireContext())
