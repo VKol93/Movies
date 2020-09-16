@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.vk.movies.ui.movies.MoviesFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_navigation_home_to_addMovieFragment"
+            app:destination="@id/addMovieFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,9 @@
         android:name="com.vk.movies.ui.settings.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/addMovieFragment"
+        android:name="com.vk.movies.ui.addmovie.AddMovieFragment"
+        android:label="fragment_add_movie"
+        tools:layout="@layout/fragment_add_movie" />
 </navigation>

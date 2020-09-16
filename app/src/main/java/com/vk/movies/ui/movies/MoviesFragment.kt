@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.vk.movies.R
@@ -37,13 +38,14 @@ class MoviesFragment : Fragment() {
         recyclerViewMovies.adapter = adapter
         recyclerViewMovies.layoutManager = LinearLayoutManager(context)
         addMovieButton.setOnClickListener {
-            val movie = Movie(
+         /*   val movie = Movie(
                 "The Lion King",
                 124,
                 "qwer",
                 "cartoon"
             )
-            db.moviesDAO().insertMovie(movie)
+            db.moviesDAO().insertMovie(movie)*/
+            findNavController().navigate(R.id.action_navigation_home_to_addMovieFragment)
         }
         filterButton.setOnClickListener {
              val view = LayoutInflater.from(requireContext()).inflate(R.layout.select_filter, null)

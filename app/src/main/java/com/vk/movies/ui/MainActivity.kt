@@ -3,14 +3,17 @@ package com.vk.movies.ui
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
 import com.vk.movies.R
+import com.vk.movies.dataSource.local.MoviesDB
 
 class MainActivity : AppCompatActivity() {
-
+    val db = Room.databaseBuilder(this, MoviesDB::class.java, "DB").allowMainThreadQueries().build()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
