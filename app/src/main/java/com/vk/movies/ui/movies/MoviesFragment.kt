@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
+import com.vk.movies.MoviesApp
 import com.vk.movies.R
 import com.vk.movies.dataSource.local.MoviesDB
 import com.vk.movies.model.DurationFilter
@@ -32,8 +33,7 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val db = Room.databaseBuilder(requireContext(), MoviesDB::class.java, "DB").allowMainThreadQueries().build()
-        val movies = db.moviesDAO().getAllMovies()
+        val movies = MoviesApp.db.moviesDAO().getAllMovies()
         val adapter = MoviesAdapter(movies)
         recyclerViewMovies.adapter = adapter
         recyclerViewMovies.layoutManager = LinearLayoutManager(context)

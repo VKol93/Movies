@@ -13,8 +13,8 @@ import com.vk.movies.R
 import com.vk.movies.dataSource.local.MoviesDB
 
 class MainActivity : AppCompatActivity() {
-    val db = Room.databaseBuilder(this, MoviesDB::class.java, "DB").allowMainThreadQueries().build()
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)

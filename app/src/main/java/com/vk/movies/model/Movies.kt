@@ -1,6 +1,4 @@
 package com.vk.movies.model
-
-import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
@@ -12,3 +10,5 @@ data class Movie(
     val genre: String,
     @PrimaryKey val id: String = UUID.randomUUID().toString()
 )
+
+

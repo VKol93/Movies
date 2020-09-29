@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
+import com.vk.movies.MoviesApp
 import com.vk.movies.R
 import com.vk.movies.dataSource.local.MoviesDB
 import com.vk.movies.model.Movie
@@ -32,7 +33,7 @@ class AddMovieFragment : Fragment() {
                 director = movieDirectorEditText.text.toString(),
                 genre = movieGenreEditText.text.toString()
             )
-            (activity as MainActivity).db
+            MoviesApp.db.moviesDAO().insertMovie(movie)
             Toast.makeText(context, "added", Toast.LENGTH_LONG).show()
             findNavController().popBackStack()
         }

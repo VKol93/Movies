@@ -1,5 +1,6 @@
 package com.vk.movies.model
 
+
 abstract class Filter(){
     abstract fun isFiltered(movie: Movie): Boolean
 }
