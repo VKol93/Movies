@@ -1,4 +1,5 @@
 package com.vk.movies.model
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 

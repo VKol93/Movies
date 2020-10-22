@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.vk.movies.model.Movie
 
 @Dao
-interface MoviesDAO{\
+interface MoviesDAO{
     @Query("SELECT * FROM Movies")
     fun getAllMovies(): List<Movie>
 
