@@ -15,7 +15,6 @@ import com.vk.movies.dataSource.local.MoviesDB
 import com.vk.movies.model.DurationFilter
 import com.vk.movies.model.Movie
 import com.vk.movies.test.getTestMovieList
-import com.vk.movies.utils.filterMovies
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.select_filter.view.*
 
@@ -27,16 +26,17 @@ class MoviesFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_movies, container, false)
-
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        
         val movies = MoviesApp.db.moviesDAO().getAllMovies()
         val adapter = MoviesAdapter(movies)
         recyclerViewMovies.adapter = adapter
         recyclerViewMovies.layoutManager = LinearLayoutManager(context)
+        
         addMovieButton.setOnClickListener {
          /*   val movie = Movie(
                 "The Lion King",
@@ -57,7 +57,8 @@ class MoviesFragment : Fragment() {
                          view.minDurationEditText.text.toString().toInt(),
                          view.maxDurationEditText.text.toString().toInt()
                     )
-                    val filteredMovies = filterMovies(getTestMovieList(), durationFilter)
+                    val filteredMovies = durationFilter.filterMovies(getTestMovieList())
+                    //val filteredMovies = filterMovies(getTestMovieList(), durationFilter)
                     val adapter = MoviesAdapter(filteredMovies)
                     recyclerViewMovies.adapter = adapter
                 }
@@ -67,6 +68,9 @@ class MoviesFragment : Fragment() {
                 }
                 .create()
                 .show()
+        }
+        deleteAllButton.setOnClickListener {
+            MoviesApp.db.moviesDAO().deleteAllMovies()
         }
     }
 }

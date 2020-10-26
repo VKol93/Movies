@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.vk.movies.MoviesApp
 import com.vk.movies.R
 import com.vk.movies.model.Movie
 import kotlinx.android.synthetic.main.movie_item.view.*
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.movie_item.view.*
 class MoviesAdapter(val movies: List<Movie>): RecyclerView.Adapter<MovieViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val viewHolder = MovieViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false))
+
         return viewHolder
     }
 
@@ -18,6 +20,15 @@ class MoviesAdapter(val movies: List<Movie>): RecyclerView.Adapter<MovieViewHold
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
+        holder.itemView.addToFavoriteButton.setOnClickListener{
+            movie.isInFavorite = !movie.isInFavorite //movie.isInFavorite == true
+            /*if (movie.isInFavorite)
+                movie.isInFavorite = false
+            else
+                movie.isInFavorite = true    */
+            MoviesApp.db.moviesDAO().updateMovie(movie)
+        }
+
         holder.bind(movie)
     }
 

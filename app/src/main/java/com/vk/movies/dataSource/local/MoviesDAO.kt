@@ -1,13 +1,10 @@
 package com.vk.movies.dataSource.local
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.vk.movies.model.Movie
 
 @Dao
-interface MoviesDAO{\
+interface MoviesDAO{
     @Query("SELECT * FROM Movies")
     fun getAllMovies(): List<Movie>
 
@@ -22,6 +19,12 @@ interface MoviesDAO{\
 
     @Delete
     fun deleteMovie(movie: Movie)
+
+    @Update
+    fun updateMovie(movie: Movie)
+
+    @Query("DELETE FROM Movies")
+    fun deleteAllMovies()
 }
 
 
