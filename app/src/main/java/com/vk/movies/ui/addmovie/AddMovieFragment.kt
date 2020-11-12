@@ -33,7 +33,7 @@ class AddMovieFragment : Fragment() {
                 director = movieDirectorEditText.text.toString(),
                 genre = movieGenreEditText.text.toString()
             )
-            MoviesApp.db.moviesDAO().insertMovie(movie)
+            MoviesApp.dataSource.insertMovie(movie)
             Toast.makeText(context, "added", Toast.LENGTH_LONG).show()
             findNavController().popBackStack()
         }

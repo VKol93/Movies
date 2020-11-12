@@ -26,7 +26,7 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val movies = MoviesApp.db.moviesDAO().getAllMovies()
+        val movies = MoviesApp.dataSource.getAllMovies()
         val filterMovies = movies.filter{it.isInFavorite}
 
 /*        val result = mutableListOf<Movie>()

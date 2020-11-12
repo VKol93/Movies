@@ -14,6 +14,11 @@ fun getTestMoviesStorage(): MovieStorage {
 
 fun getTestMovieList(): List<Movie>{
     var movie1 = Movie("Titanic", 130, "Cameron", "Action")
-    val movie2 = Movie("Matrix", 120, "fdsfdsf", "Drama")
-    return listOf(movie1, movie2)
+    var movie2 = Movie("Matrix", 120, "fdsfdsf", "Drama")
+    var movie3 = Movie("Revolver", 160,"Gay Richi", "drama")
+    val movie4 = Movie("The Lion King", 135, "Gay Richi", "cartoon")
+    val movie5 = Movie("The dead poets Society", 140, "Gay Richi", "drama")
+
+
+    return listOf(movie1, movie2, movie3, movie4,movie5)
 }

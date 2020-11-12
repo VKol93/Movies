@@ -5,11 +5,13 @@ import java.util.*
 
 @Entity(tableName = "Movies")
 data class Movie(
-    val name: String, 
-    val duration: Int, 
-    val director: String, 
+    val name: String,
+    val duration: Int,
+    var director: String,
     val genre: String,
     @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
     var isInFavorite: Boolean = false 
-)
+){
+    //override fun toString(): String  = "$name"
+}

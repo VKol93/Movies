@@ -26,7 +26,7 @@ class MoviesAdapter(val movies: List<Movie>): RecyclerView.Adapter<MovieViewHold
                 movie.isInFavorite = false
             else
                 movie.isInFavorite = true    */
-            MoviesApp.db.moviesDAO().updateMovie(movie)
+            MoviesApp.dataSource.updateMovie(movie)
         }
 
         holder.bind(movie)
