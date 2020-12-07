@@ -9,12 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.vk.movies.MoviesApp
 import com.vk.movies.R
 import com.vk.movies.model.DurationFilter
 import com.vk.movies.model.Movie
 import com.vk.movies.test.getTestMovieList
+import kotlinx.android.synthetic.main.fragment_add_movie.*
 import kotlinx.android.synthetic.main.fragment_movies.*
+import kotlinx.android.synthetic.main.fragment_movies.addMovieButton
 import kotlinx.android.synthetic.main.select_filter.view.*
 import kotlinx.android.synthetic.main.stats_dialog.view.*
 
@@ -87,6 +88,7 @@ class MoviesFragment : Fragment() {
                 .create()
                 .show()
         }
+
     }
 
 }

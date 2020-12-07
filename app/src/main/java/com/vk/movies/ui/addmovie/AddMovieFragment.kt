@@ -7,12 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.room.Room
 import com.vk.movies.MoviesApp
 import com.vk.movies.R
-import com.vk.movies.dataSource.local.MoviesDB
 import com.vk.movies.model.Movie
-import com.vk.movies.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_add_movie.*
 
 class AddMovieFragment : Fragment() {
@@ -31,7 +28,9 @@ class AddMovieFragment : Fragment() {
                 name = movieNameEditText.text.toString(),
                 duration = movieDurationEditText.text.toString().toInt(),
                 director = movieDirectorEditText.text.toString(),
-                genre = movieGenreEditText.text.toString()
+                genre = movieGenreEditText.text.toString(),
+                country = movieCountryProductionEditText.text.toString(),
+                year = movieYearEditText.text.toString().toInt()
             )
             MoviesApp.dataSource.insertMovie(movie)
             Toast.makeText(context, "added", Toast.LENGTH_LONG).show()

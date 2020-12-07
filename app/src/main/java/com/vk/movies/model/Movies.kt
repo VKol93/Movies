@@ -9,9 +9,9 @@ data class Movie(
     val duration: Int,
     var director: String,
     val genre: String,
+    val country:String,
+    val year:Int,
     @PrimaryKey
     val id: String = UUID.randomUUID().toString(),
-    var isInFavorite: Boolean = false 
-){
-    //override fun toString(): String  = "$name"
-}
+    var isInFavorite: Boolean = false
+)

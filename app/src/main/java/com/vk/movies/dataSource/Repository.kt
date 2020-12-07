@@ -4,7 +4,7 @@ import com.vk.movies.dataSource.local.MoviesLocalDataSource
 import com.vk.movies.dataSource.remote.MoviesRemoteDataSource
 import com.vk.movies.model.Movie
 
-class Repository (val localDataSource: MoviesDataSource, val remoteDataSource: MoviesDataSource) : MoviesDataSource{
+class Repository (private val localDataSource: MoviesDataSource, private val remoteDataSource: MoviesDataSource) : MoviesDataSource{
     override fun getAllMovies(): List<Movie> {
         return try {
             val movies = remoteDataSource.getAllMovies()

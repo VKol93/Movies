@@ -38,9 +38,25 @@
         android:hint="Genre"
         android:inputType="textPersonName" />
 
+    <EditText
+        android:id="@+id/movieCountryProductionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Country Production"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/movieYearEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberSigned" />
+
     <Button
         android:id="@+id/addMovieButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Add Movie" />
+
 </LinearLayout>
