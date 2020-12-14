@@ -10,7 +10,7 @@ import com.vk.movies.model.Movie
 import kotlinx.android.synthetic.main.movie_description.view.*
 import kotlinx.android.synthetic.main.movie_item.view.*
 
-class MoviesAdapter(val movies: List<Movie>, val clickListener: OnMovieClickListener): RecyclerView.Adapter<MovieViewHolder>(){
+class MoviesAdapter(val movies: List<Movie>, val clickListener: OnMovieClickListener?): RecyclerView.Adapter<MovieViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val viewHolder = MovieViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false))
 
@@ -32,13 +32,13 @@ class MoviesAdapter(val movies: List<Movie>, val clickListener: OnMovieClickList
     }
 }
 class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-    fun bind(movie: Movie, clickListener: OnMovieClickListener){
+    fun bind(movie: Movie, clickListener: OnMovieClickListener?){
         itemView.movieName.setText(movie.name)
         itemView.movieDirector.setText(movie.director)
         itemView.movieDuration.setText(movie.duration.toString())
         itemView.movieGenre.setText(movie.genre)
         itemView.setOnClickListener {
-            clickListener.onItemClick(movie, adapterPosition)
+            clickListener?.onItemClick(movie, adapterPosition)
         }
 
     }

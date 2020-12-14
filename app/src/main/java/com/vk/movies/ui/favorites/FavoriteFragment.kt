@@ -34,7 +34,7 @@ class FavoriteFragment : Fragment() {
             if (movie.isInFavorite)
                 result.add(movie)*/
 
-        val adapter = MoviesAdapter(filterMovies)
+        val adapter = MoviesAdapter(filterMovies, null)
         recyclerViewFavorite.adapter = adapter
         recyclerViewFavorite.layoutManager = LinearLayoutManager(context)
 

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.vk.movies.MoviesApp
 import com.vk.movies.R
 import com.vk.movies.model.DurationFilter
+import com.vk.movies.model.Movie
 import com.vk.movies.test.getTestMovieList
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.select_filter.view.*
@@ -30,14 +31,15 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*val listener = object: OnMovieClickListener{
-            override fun onItemClick(movie: Movie, position: Int) {
-                val action = MovieFrag
-            }
-        }*/
-
         val movies = MoviesApp.db.moviesDAO().getAllMovies()
-        val adapter = MoviesAdapter(movies)
+        val onClickListener = object: OnMovieClickListener{
+            override fun onItemClick(movie: Movie, position: Int) {
+                val action = MoviesFragmentDirections.actionNavigationHomeToMovieDetailsFragment2(movie.id)
+                findNavController().navigate(action)
+            }
+
+        }
+        val adapter = MoviesAdapter(movies, onClickListener)
         recyclerViewMovies.adapter = adapter
         recyclerViewMovies.layoutManager = LinearLayoutManager(context)
 
@@ -64,7 +66,7 @@ class MoviesFragment : Fragment() {
                     )
                     val filteredMovies = durationFilter.filterMovies(getTestMovieList())
                     //val filteredMovies = filterMovies(getTestMovieList(), durationFilter)
-                    val adapter = MoviesAdapter(filteredMovies)
+                    val adapter = MoviesAdapter(filteredMovies, onClickListener)
                     recyclerViewMovies.adapter = adapter
                 }
                 .setNegativeButton("Cancel"){dialog, which ->
