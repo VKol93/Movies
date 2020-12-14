@@ -13,7 +13,7 @@ import com.vk.movies.ui.movies.MoviesAdapter
 import kotlinx.android.synthetic.main.fragment_favorite.*
 
 
-class DashboardFragment : Fragment() {
+class FavoriteFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
