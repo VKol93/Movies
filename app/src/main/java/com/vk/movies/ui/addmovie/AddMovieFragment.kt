@@ -33,20 +33,9 @@ class AddMovieFragment : Fragment() {
                 director = movieDirectorEditText.text.toString(),
                 genre = movieGenreEditText.text.toString()
             )
-                /*country = movieCountryProductionEditText.text.toString(),
-                year = movieYearEditText.text.toString().toInt()*/
-
             MoviesApp.db.moviesDAO().insertMovie(movie)
             Toast.makeText(context, "added", Toast.LENGTH_LONG).show()
             findNavController().popBackStack()
         }
     }
 }
-
-/*   val movie = Movie(
-          "The Lion King",
-          124,
-          "qwer",
-          "cartoon"
-      )
-      db.moviesDAO().insertMovie(movie)*/

@@ -10,9 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vk.movies.MoviesApp
 import com.vk.movies.R
-import com.vk.movies.model.DurationFilter
 import com.vk.movies.model.Movie
-import com.vk.movies.test.getTestMovieList
 import kotlinx.android.synthetic.main.fragment_movies.*
 import kotlinx.android.synthetic.main.select_filter.view.*
 
@@ -44,13 +42,6 @@ class MoviesFragment : Fragment() {
         recyclerViewMovies.layoutManager = LinearLayoutManager(context)
 
         addMovieButton.setOnClickListener {
-            /*   val movie = Movie(
-                "The Lion King",
-                124,
-                "qwer",
-                "cartoon"
-            )1
-            db.moviesDAO().insertMovie(movie)*/
             findNavController().navigate(R.id.action_navigation_home_to_addMovieFragment)
         }
 
@@ -60,12 +51,10 @@ class MoviesFragment : Fragment() {
              builder.setView(view)
                 .setTitle("Select Filters")
                 .setPositiveButton("Apply"){ dialog, which ->
-                    val durationFilter = DurationFilter(
-                         view.minDurationEditText.text.toString().toInt(),
-                         view.maxDurationEditText.text.toString().toInt()
-                    )
-                    val filteredMovies = durationFilter.filterMovies(getTestMovieList())
-                    //val filteredMovies = filterMovies(getTestMovieList(), durationFilter)
+                    val minDuration =  view.minDurationEditText.text.toString().toInt()
+                    val maxDuration = view.maxDurationEditText.text.toString().toInt()
+                    val movies = MoviesApp.db.moviesDAO().getAllMovies()
+                    val filteredMovies = movies.filter{  movie-> movie.duration in minDuration..maxDuration }
                     val adapter = MoviesAdapter(filteredMovies, onClickListener)
                     recyclerViewMovies.adapter = adapter
                 }

@@ -8,12 +8,6 @@ interface MoviesDAO{
     @Query("SELECT * FROM Movies")
     fun getAllMovies(): List<Movie>
 
-    @Query("SELECT * FROM Movies WHERE duration>120")
-    fun getAllLongMovies(): List<Movie>
-
-    @Query("SELECT * FROM Movies WHERE duration>:minDuration")
-    fun getMoviesByDuration(minDuration: Int): List<Movie>
-
     @Insert
     fun insertMovie(movie: Movie)
 
@@ -26,5 +20,6 @@ interface MoviesDAO{
     @Query("DELETE FROM Movies")
     fun deleteAllMovies()
 }
+
 
 

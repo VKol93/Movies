@@ -28,12 +28,6 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val movies = MoviesApp.db.moviesDAO().getAllMovies()
         val filterMovies = movies.filter{it.isInFavorite}
-
-/*        val result = mutableListOf<Movie>()
-        for (movie in movies)
-            if (movie.isInFavorite)
-                result.add(movie)*/
-
         val adapter = MoviesAdapter(filterMovies, null)
         recyclerViewFavorite.adapter = adapter
         recyclerViewFavorite.layoutManager = LinearLayoutManager(context)

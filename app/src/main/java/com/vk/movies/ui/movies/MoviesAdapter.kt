@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.movie_item.view.*
 class MoviesAdapter(val movies: List<Movie>, val clickListener: OnMovieClickListener?): RecyclerView.Adapter<MovieViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val viewHolder = MovieViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.movie_item, parent, false))
-
         return viewHolder
     }
     override fun getItemCount(): Int = movies.size
@@ -21,11 +20,7 @@ class MoviesAdapter(val movies: List<Movie>, val clickListener: OnMovieClickList
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = movies[position]
         holder.itemView.addToFavoriteButton.setOnClickListener{
-            movie.isInFavorite = !movie.isInFavorite //movie.isInFavorite == true
-            /*if (movie.isInFavorite)
-                movie.isInFavorite = false
-            else
-                movie.isInFavorite = true    */
+            movie.isInFavorite = !movie.isInFavorite
             MoviesApp.db.moviesDAO().updateMovie(movie)
         }
         holder.bind(movies[position], clickListener)
@@ -33,10 +28,10 @@ class MoviesAdapter(val movies: List<Movie>, val clickListener: OnMovieClickList
 }
 class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     fun bind(movie: Movie, clickListener: OnMovieClickListener?){
-        itemView.movieName.setText(movie.name)
-        itemView.movieDirector.setText(movie.director)
-        itemView.movieDuration.setText(movie.duration.toString())
-        itemView.movieGenre.setText(movie.genre)
+        itemView.movieName.text = movie.name
+        itemView.movieDirector.text = movie.director
+        itemView.movieDuration.text = movie.duration.toString()
+        itemView.movieGenre.text = movie.genre
         itemView.setOnClickListener {
             clickListener?.onItemClick(movie, adapterPosition)
         }
